@@ -80,27 +80,42 @@ A repository of all the solutions I found (figured) out while solving a problem
    ```js
    // eslint.config.js
 
+   import js from "@eslint/js";
    import globals from "globals";
-   import pluginJs from "@eslint/js";
-   import pluginReact from "eslint-plugin-react";
+   import reactHooks from "eslint-plugin-react-hooks";
+   import reactRefresh from "eslint-plugin-react-refresh";
 
    export default [
-   {
-      files: ["**/*.{js,mjs,cjs,jsx}"],
-      languageOptions: {
+     { ignores: ["dist"] },
+     {
+       files: ["**/*.{js,jsx}"],
+       languageOptions: {
+         ecmaVersion: 2020,
          globals: globals.browser,
-         ecmaVersion: "latest",
-         sourceType: "module"
-      },
-      rules: {
-         "react/react-in-jsx-scope": "off", // No need to import React in React 19+
-         "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }]
-      },
-      extends: [
-         pluginJs.configs.recommended,
-         pluginReact.configs.recommended
-      ]
-   }
-   ];
+         parserOptions: {
+           ecmaVersion: "latest",
+           ecmaFeatures: { jsx: true },
+           sourceType: "module",
+         },
+       },
+       plugins: {
+         "react-hooks": reactHooks,
+         "react-refresh": reactRefresh,
+       },
+       rules: {
+         ...js.configs.recommended.rules,
+         ...reactHooks.configs.recommended.rules,
+         "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+         "react-refresh/only-export-components": [
+           "warn",
+           { allowConstantExport: true },
+         ],
 
+         // new rules
+
+         "react/react-in-jsx-scope": "off", // No need to import React in React 19+
+         "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
+       },
+     },
+   ];
    ```
