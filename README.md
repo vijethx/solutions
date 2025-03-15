@@ -70,3 +70,37 @@ A repository of all the solutions I found (figured) out while solving a problem
    Select `Pop!\_OS on Wayland" and Log In
 
    Finally, go to Settings -> Displays and adjust the monitor resolutions
+
+## web
+
+1. 'React' must be in scope while using JSX
+
+   Came across this error when I was building a Todo App with ViteJS w/ React and added an ESLint configuration. The solution was to either add a couple rules to the `eslint.config.js` file or use `import React from 'react' in all the files.
+
+   ```js
+   // eslint.config.js
+
+   import globals from "globals";
+   import pluginJs from "@eslint/js";
+   import pluginReact from "eslint-plugin-react";
+
+   export default [
+   {
+      files: ["**/*.{js,mjs,cjs,jsx}"],
+      languageOptions: {
+         globals: globals.browser,
+         ecmaVersion: "latest",
+         sourceType: "module"
+      },
+      rules: {
+         "react/react-in-jsx-scope": "off", // No need to import React in React 19+
+         "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }]
+      },
+      extends: [
+         pluginJs.configs.recommended,
+         pluginReact.configs.recommended
+      ]
+   }
+   ];
+
+   ```
