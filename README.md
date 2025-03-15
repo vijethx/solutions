@@ -75,7 +75,7 @@ A repository of all the solutions I found (figured) out while solving a problem
 
 1. 'React' must be in scope while using JSX
 
-   Came across this error when I was building a Todo App with ViteJS w/ React and added an ESLint configuration. The solution was to either add a couple rules to the `eslint.config.js` file or use `import React from 'react' in all the files.
+   Came across this error when I was building a Todo App with ViteJS w/ React and added an ESLint configuration. The solution was to either add a couple rules to the `eslint.config.js` file or use `import React from 'react'` in all the files.
 
    ```js
    // eslint.config.js
