@@ -119,3 +119,13 @@ A repository of all the solutions I found (figured) out while solving a problem
      },
    ];
    ```
+
+2. set prettier as the default formatter for everything in vscode
+
+    Open settings by clicking the cog in the bottom left of the vs code side bar and selecting settings from the menu, or by hitting `Ctrl + ,`
+
+    At the top right of the settings pane, hit the open file icon (if you hover, the tooltip will read 'Open Settings (JSON)'
+
+    Add the following line to the settings json:
+    
+    `"editor.defaultFormatter": "esbenp.prettier-vscode"`
