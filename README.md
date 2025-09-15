@@ -10,9 +10,9 @@ A repository of all the solutions I found (figured) out while solving a problem
 
    [StackOverflow](https://stackoverflow.com/a/44099011)
 
-## linux
+## linux (Pop!_OS 22.04)
 
-(all my problems and solutions are/were for Pop!\_OS 22.04, may or may not work for other distros or versions)
+(these problems & their respective solutions were discovered in Pop!\_OS 22.04. these may or may not work for other distros or versions)
 
 1. `initramfs-tools` error while installing anything on Pop!\_OS
 
@@ -81,7 +81,22 @@ A repository of all the solutions I found (figured) out while solving a problem
 
    Add two new shortcuts namely `Night Light ON` and `Night Light OFF`, use the above commands and set any shortcuts you like. I've set it to `Alt + N` to turn on and `Alt + M` to turn off.
 
-5.
+## linux (Fedora Workstation 42)
+(these problems & their respective solutions were discovered in Fedora Workstation 42. these may or may not work for other distros or versions)
+
+1. flatpak warning "wrong layer checksum"
+
+   indicates that the downloaded data for a Flatpak application or runtime does not match the expected checksum. This usually means the downloaded files are corrupted or incomplete, preventing Flatpak from verifying their integrity and ensuring a safe installation or update.
+
+   Troubleshooting Steps:
+   - Retry the Update/Installation: The simplest solution is often to try updating or installing the Flatpak again. Network issues might be temporary.
+      ```bash 
+      flatpak update
+      ```
+   - Repair Flatpak: Use the flatpak repair command to check for and attempt to fix corrupted files in your Flatpak installation.
+      ```bash 
+      sudo flatpak repair --system
+      ```
 
 ## web
 
