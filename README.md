@@ -10,7 +10,7 @@ A repository of all the solutions I found (figured) out while solving a problem
 
    [StackOverflow](https://stackoverflow.com/a/44099011)
 
-## linux (Pop!_OS 22.04)
+## linux (Pop!\_OS 22.04)
 
 (these problems & their respective solutions were discovered in Pop!\_OS 22.04. these may or may not work for other distros or versions)
 
@@ -81,22 +81,70 @@ A repository of all the solutions I found (figured) out while solving a problem
 
    Add two new shortcuts namely `Night Light ON` and `Night Light OFF`, use the above commands and set any shortcuts you like. I've set it to `Alt + N` to turn on and `Alt + M` to turn off.
 
-## linux (Fedora Workstation 42)
+## linux (Fedora Workstation 43)
+
 (these problems & their respective solutions were discovered in Fedora Workstation 42. these may or may not work for other distros or versions)
 
-1. flatpak warning "wrong layer checksum"
+1. flatpak warning "wrong layer checksum" (_Fedora Workstation 42_)
 
    indicates that the downloaded data for a Flatpak application or runtime does not match the expected checksum. This usually means the downloaded files are corrupted or incomplete, preventing Flatpak from verifying their integrity and ensuring a safe installation or update.
 
    Troubleshooting Steps:
+
    - Retry the Update/Installation: The simplest solution is often to try updating or installing the Flatpak again. Network issues might be temporary.
-      ```bash 
-      flatpak update
-      ```
+     ```bash
+     flatpak update
+     ```
    - Repair Flatpak: Use the flatpak repair command to check for and attempt to fix corrupted files in your Flatpak installation.
-      ```bash 
-      sudo flatpak repair --system
-      ```
+     ```bash
+     sudo flatpak repair --system
+     ```
+
+2. installing Waydroid on Fedora 43
+
+   try only if the official [instructions](https://docs.waydro.id/usage/install-on-desktops#fedora) do not work
+
+   Install Waydroid from the official package repository
+
+   ```bash
+   sudo dnf update # just a precautionary measure
+   sudo dnf install curl ca-certificates # if not already installed
+   sudo dnf install waydroid
+   ```
+
+   Download System and Vendor Images from Sourceforge
+
+   [System Image](https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/)
+
+   [Vendor Image](https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86_64/)
+
+   Extract these images and keep ready
+
+   Now, open the terminal/console in the directory where the image files are stored.
+
+   Create these two directories, which Waydroid will read during initialization
+
+   ```bash
+   sudo mkdir /etc/waydroid-extra
+   sudo mkdir /etc/waydroid-extra/images
+   ```
+
+   Move (or Copy) the two image files to the newly created directory
+
+   ```bash
+   sudo mv system.img vendor.img /etc/waydroid-extra/images
+
+   # Verify if the files are moved (optional)
+   ls /etc/waydroid-extra/images
+   ```
+
+   Finally, run the setup command and Fedora will create the Android container and prepare the environment
+
+   ```bash
+   sudo waydroid init -f
+   ```
+
+   Close the terminal once the initialization is done. Open Waydroid from the Applications menu.
 
 ## web
 
