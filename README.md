@@ -83,7 +83,7 @@ A repository of all the solutions I found (figured) out while solving a problem
 
 ## linux (Fedora Workstation 43)
 
-(these problems & their respective solutions were discovered in Fedora Workstation 42. these may or may not work for other distros or versions)
+(these problems & their respective solutions were discovered in Fedora Workstation 43. these may or may not work for other distros or versions)
 
 1. flatpak warning "wrong layer checksum" (_Fedora Workstation 42_)
 
