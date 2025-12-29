@@ -146,9 +146,55 @@ A repository of all the solutions I found (figured) out while solving a problem
 
    Close the terminal once the initialization is done. Open Waydroid from the Applications menu.
 
-## web
+3. installing Davinci Resolve 20.3.1
 
-1. 'React' must be in scope while using JSX
+   _this could be a version specific issue, might not work on other versions_
+
+   Installation Instructions from Blackmagic Design
+
+   - From the Blackmagic Design website [](https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion) or [](https://www.blackmagicdesign.com/products/davinciresolve) download DaVinci_Resolve_20.3.1_Linux.zip file
+   - Unzip the package.
+
+   ```bash
+   cd ~/Downloads/DaVinci_Resolve_20.3.1_Linux  # the directory where the file is stored
+
+   chmod +x ./DaVinci_Resolve_20.3.1_Linux.run
+   sudo ./DaVinci_Resolve_20.3.1_Linux.run -i
+   ```
+
+   If everything is set, this should work.
+
+   Additional Steps if Davinci Resolve does not work
+
+   ```bash
+   cd /opt/resolve/libs
+   sudo mkdir disabled-libraries
+   sudo mv libglib* disabled-libraries
+   sudo mv libgio* disabled-libraries
+   sudo mv libgmodule* disabled-libraries
+   ```
+
+   Then run
+
+   ```bash
+   davinci-resolve
+   ```
+
+   It should either run Davinci Resolve or tell you which libraries/packages are missing. Fix the issues and you're set to go.
+
+   Most common missing libraries are
+
+   ```
+   libxcrypt-compat
+   mesa-libGLU
+   alsa-lib
+   xcb-util-renderutil
+   xcb-util-wm
+   ```
+
+   ## web
+
+4. 'React' must be in scope while using JSX
 
    Came across this error when I was building a Todo App with ViteJS w/ React and added an ESLint configuration. The solution was to either add a couple rules to the `eslint.config.js` file or use `import React from 'react'` in all the files.
 
@@ -195,7 +241,7 @@ A repository of all the solutions I found (figured) out while solving a problem
    ];
    ```
 
-2. set prettier as the default formatter for everything in vscode
+5. set prettier as the default formatter for everything in vscode
 
    Open settings by clicking the cog in the bottom left of the vs code side bar and selecting settings from the menu, or by hitting `Ctrl + ,`
 
@@ -205,6 +251,6 @@ A repository of all the solutions I found (figured) out while solving a problem
 
    `"editor.defaultFormatter": "esbenp.prettier-vscode"`
 
-3. html images not rendering
+6. html images not rendering
 
    change image path name from `/path/to/image.png` to `path/to/image.png` i.e., do not add a slash before the path
