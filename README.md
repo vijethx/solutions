@@ -162,6 +162,12 @@ A repository of all the solutions I found (figured) out while solving a problem
    sudo ./DaVinci_Resolve_20.3.1_Linux.run -i
    ```
 
+   Might have to run if there's a zlib error
+
+   ```
+   sudo SKIP_PACKAGE_CHECK=1 ./DaVinci_Resolve_XYZ
+   ```
+
    If everything is set, this should work.
 
    Additional Steps if Davinci Resolve does not work
